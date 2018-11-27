@@ -1,5 +1,6 @@
 package com.development.blackbox.showup.Helpers.AsyncTasks;
 
+
 import android.os.AsyncTask;
 
 import com.development.blackbox.showup.BusinessLayer.WebAPIService;
@@ -111,7 +112,16 @@ public class WebAPIAsyncTaskService extends AsyncTask<Object, Void, Object> {
                 long senderUserID = Integer.parseInt(objects[2].toString());
                 retVal = service.LoadPhoto(myUserID, senderUserID);
 
-            } else if (asyncCallTypeValue == AsyncCallType.DELETE_PHOTO.getCode()) {
+            } else if (asyncCallTypeValue == AsyncCallType.SHUFFLE_PHOTO.getCode()) {
+
+                WebAPIService service = new WebAPIService();
+
+                Boolean maleChecked = Boolean.parseBoolean(objects[1].toString());
+
+                retVal = service.GetImageUrl(maleChecked);
+            }
+
+            else if (asyncCallTypeValue == AsyncCallType.DELETE_PHOTO.getCode()) {
 
                 WebAPIService service = new WebAPIService();
 

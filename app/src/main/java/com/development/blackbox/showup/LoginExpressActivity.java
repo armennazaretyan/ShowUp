@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -14,7 +15,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
@@ -24,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -235,6 +236,19 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
             //intent.putExtra("2", 1);
             startActivity(intent);
             finish();
+        } else if(result instanceof Bitmap) {
+
+            ProgressBar pgsBar = (ProgressBar) findViewById(R.id.pBar);
+            pgsBar.setVisibility(View.GONE);
+
+            Bitmap bitmap = (Bitmap)result;
+
+            try {
+                ImageView imgAvatar = (ImageView) findViewById(R.id.imgAvatar);
+                imgAvatar.setImageBitmap(bitmap);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -285,6 +299,35 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
         imgMakePhoto.setImageResource(R.drawable.make_photo_enabled);
     }
 */
+    public void receivePhoto() {
+
+        if(_MaleChecked == null) {
+            return;
+        }
+
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = connMgr.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null && activeNetwork.isConnectedOrConnecting();
+
+        if (isConnected) {
+
+            ProgressBar pgsBar = (ProgressBar) findViewById(R.id.pBar);
+            pgsBar.setVisibility(View.VISIBLE);
+
+            Object objParams[] = new Object[2];
+            objParams[0] = AsyncCallType.SHUFFLE_PHOTO.getCode();
+            objParams[1] = _MaleChecked;
+            new WebAPIAsyncTaskService(this).execute(objParams);
+
+        } else {
+
+            return;
+        }
+    }
+
+    public void onChangeAvatarPhoto(View view) {
+        //receivePhoto();
+    }
 
     Boolean _MaleChecked = null;
     public void onMaleClicked(View view) {
@@ -299,7 +342,6 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
         ImageView imgAvatar = (ImageView) findViewById(R.id.imgAvatar);
         //imgAvatar.setImageResource(R.drawable.meninblack);
         imgAvatar.setImageDrawable(getResources().getDrawable(R.drawable.meninblack));
-
 
         getNickName(GenderEnumType.MALE.getCode());
     }

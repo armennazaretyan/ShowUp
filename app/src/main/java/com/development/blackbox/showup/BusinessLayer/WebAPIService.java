@@ -1,5 +1,7 @@
 package com.development.blackbox.showup.BusinessLayer;
 
+import android.graphics.BitmapFactory;
+
 import com.development.blackbox.showup.DataAccessLayer.WebAPIServiceProvider;
 import com.development.blackbox.showup.Helpers.Enums.GenderEnumType;
 import com.development.blackbox.showup.Models.ActiveUsersResponse;
@@ -9,6 +11,13 @@ import com.development.blackbox.showup.Models.UserUIModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class WebAPIService {
 
@@ -102,6 +111,42 @@ public class WebAPIService {
 
             int ttt = 1;
             throw new Exception(ex.getMessage());
+        }
+
+        return retVal;
+    }
+
+    public Object GetImageUrl(Boolean maleChecked) throws Exception {
+
+        Object retVal = new Object();
+
+        ArrayList<String> arrayList = new ArrayList<String>();
+        if(maleChecked) {
+            arrayList.add("http://blackbox.am/images/Avatar/meninblack.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/eric_lange.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/Getty.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/pexels.jpeg");
+            arrayList.add("http://blackbox.am/images/Avatar/pexels2.jpeg");
+            arrayList.add("http://blackbox.am/images/Avatar/prison.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/strak_trimmen.jpg");
+        } else {
+            arrayList.add("http://blackbox.am/images/Avatar/woman_tits.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/woman_face.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/girl1.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/girl1_1.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/girl2.jpg");
+            arrayList.add("http://blackbox.am/images/Avatar/girl4.jpg");
+        }
+
+        Collections.shuffle(arrayList);
+
+        try {
+            String imageUrl = arrayList.get(0);
+            retVal = BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return retVal;

@@ -69,13 +69,32 @@
 
                     </RelativeLayout>
                 </LinearLayout>
-                <ImageView
-                    android:id="@+id/imgAvatar"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/meninblack"
-                    android:gravity="bottom"
-                    />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imgAvatar"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/meninblack"
+                        android:gravity="bottom"
+                        android:onClick="onChangeAvatarPhoto"
+                        >
+                    </ImageView>
+                    <ProgressBar
+                        android:id="@+id/pBar"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:minHeight="50dp"
+                        android:minWidth="50dp"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:max="100"
+                        android:indeterminate="false"
+                        android:visibility="gone"
+                        android:progress="0" />
+                </RelativeLayout>
+
                 <LinearLayout
                     android:layout_weight="1"
                     android:layout_width="match_parent"
