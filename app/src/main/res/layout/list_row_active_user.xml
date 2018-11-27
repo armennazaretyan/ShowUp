@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dip"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dip">
+
+        <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="50dip"
+            android:layout_height="50dip"/>
+
+        <ImageView
+            android:id="@+id/userImageOnline"
+            android:layout_width="10dip"
+            android:layout_height="10dip"
+            android:layout_marginLeft="-10dp"
+            android:src="@drawable/ic_online"
+            android:visibility="invisible"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:paddingTop="5dip"
+        android:paddingBottom="15dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="name"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="15dip"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/userGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:paddingTop="25dip"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="FeMale"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="10dip" />
+
+    <TextView
+        android:id="@+id/userAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="65dp"
+        android:paddingTop="40dip"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="18"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="10dip" />
+
+    <Button
+        android:id="@+id/btnPhotoToMe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:textAllCaps="false"
+        android:text=""
+        android:onClick="onReceivePhoto"
+        />
+
+    <Button
+        android:id="@+id/btnRequestToMe"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:textAllCaps="false"
+        android:text=""
+        android:onClick="onSendPhoto"
+        />
+
+    <Button
+        android:id="@+id/btnTry"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:textAllCaps="false"
+        android:text="Try"
+        android:onClick="onTry"
+        />
+
+</RelativeLayout>

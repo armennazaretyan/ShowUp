@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "86626221836",
+    "firebase_url": "https://showup-ffdfc.firebaseio.com",
+    "project_id": "showup-ffdfc",
+    "storage_bucket": "showup-ffdfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86626221836:android:953e4bf94ef56127",
+        "android_client_info": {
+          "package_name": "com.development.blackbox.showup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86626221836-3fsl2i1fmsoqkiob36kv70r6f201aj46.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.development.blackbox.showup",
+            "certificate_hash": "d4343b6060c8202313dfe9b027cc62a784019179"
+          }
+        },
+        {
+          "client_id": "86626221836-5phg1b764ih8kkn29sl7dv02kmaj9c12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAelsEWj0Q0a2ZRBHSSIR9EKgLbTwzGwR0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86626221836-5phg1b764ih8kkn29sl7dv02kmaj9c12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

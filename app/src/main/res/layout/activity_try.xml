@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.development.blackbox.showup.Activities.TryActivity">
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:foreground="@drawable/rounded_fg"
+        />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center_horizontal"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:text="name" />
+
+    <TextView
+        android:id="@+id/userGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:paddingTop="50dip"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="FeMale"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="10dip" />
+
+    <TextView
+        android:id="@+id/userAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:paddingTop="65dip"
+        android:paddingBottom="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:text="18"
+        android:textColor="#040404"
+        android:typeface="sans"
+        android:textSize="10dip" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:padding="0dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Cancel"
+            android:onClick="onCancel" />
+
+        <Button
+            android:id="@+id/btnOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="ShowUp"
+            android:onClick="onShowUp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
