@@ -344,7 +344,7 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
 
         InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        //etNickName.getWindowToken()
+        //                          etNickName.getWindowToken()
 
         tvNickName.setText(etNickName.getText());
         etNickName.setVisibility(View.GONE);
