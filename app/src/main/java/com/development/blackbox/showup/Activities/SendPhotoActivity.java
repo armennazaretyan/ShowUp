@@ -14,9 +14,11 @@ import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -209,6 +211,8 @@ public class SendPhotoActivity extends PresentationLayerBase implements ICallbac
     private void startToMakePhoto() {
 
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
 
         // Create the File where the photo should go
         File photoFile = null;
@@ -223,11 +227,23 @@ public class SendPhotoActivity extends PresentationLayerBase implements ICallbac
         if (photoFile != null) {
 
             try {
-                    /*Uri photoURI = FileProvider.getUriForFile(this,
-                            "com.development.blackbox.avianet",
-                            photoFile);*/
 
-                Uri photoURI = Uri.fromFile(photoFile);
+                //Android/data/com.development.blackbox.showup/files/Pictures
+
+                Uri photoURI;
+
+                if(Build.VERSION.SDK_INT >= 24) {
+
+                    photoURI = FileProvider.getUriForFile(this, "com.development.blackbox.showup", photoFile);
+                    /*try {
+                        Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                        m.invoke(null);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }*/
+                } else {
+                    photoURI = Uri.fromFile(photoFile);
+                }
 
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
