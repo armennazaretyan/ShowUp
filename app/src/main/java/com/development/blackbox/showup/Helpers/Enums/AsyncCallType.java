@@ -17,7 +17,8 @@ public enum AsyncCallType {
     GET_LOG_TEST("13"),
     LOG_IN_EXPRESS("14"),
     GET_NICK_NAME("15"),
-    SHUFFLE_PHOTO("16");
+    SHUFFLE_PHOTO("16"),
+    LOG_HELPER("17");
 
 
     private String code;

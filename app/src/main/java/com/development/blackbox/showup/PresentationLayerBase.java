@@ -7,9 +7,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.development.blackbox.showup.Helpers.LogHelper;
+
 public class PresentationLayerBase extends AppCompatActivity {
 
     protected ProgressDialog _ProgressDialog;
+    protected LogHelper _LogHelper;
+    protected Handler mHandler;
 
     /*protected final String LOGIN_SETTINGS = "loginInfo";
     protected final String USER_ID_KEY = "LoggedInUserID";
@@ -20,12 +24,15 @@ public class PresentationLayerBase extends AppCompatActivity {
 
 
 
-    protected Handler mHandler;
 
 
     public PresentationLayerBase() {
         if (mHandler == null) {
             mHandler = new Handler();
+        }
+
+        if (_LogHelper == null) {
+            _LogHelper = new LogHelper(this);
         }
     }
 

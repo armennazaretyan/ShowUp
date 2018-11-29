@@ -161,6 +161,13 @@ public class WebAPIAsyncTaskService extends AsyncTask<Object, Void, Object> {
                 String token = objects[3].toString();
                 retVal = service.SendToken(myUserID, token, android_id);
 
+            } else if (asyncCallTypeValue == AsyncCallType.LOG_HELPER.getCode()) {
+
+                WebAPIService service = new WebAPIService();
+                String message = objects[1].toString();
+                String stackTrace = objects[2].toString();
+                String android_id = objects[3].toString();
+                service.LogData(message, stackTrace, android_id);
             }
 
             return retVal;

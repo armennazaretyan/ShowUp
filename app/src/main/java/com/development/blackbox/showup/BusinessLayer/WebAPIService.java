@@ -371,6 +371,30 @@ public class WebAPIService {
         return retVal;
     }
 
+    public boolean LogData(String message, String stackTrace, String android_id) throws Exception {
+
+        boolean retVal = true;
+
+        try {
+
+            WebAPIServiceProvider dbService = new WebAPIServiceProvider();
+            String stringRetValObject = dbService.LogData(message, stackTrace, android_id);
+
+            if (Integer.parseInt(stringRetValObject.toString()) == 1) {
+                retVal = true;
+            } else {
+                retVal = false;
+            }
+
+        } catch (Exception ex) {
+
+            retVal = false;
+            throw new Exception(ex.getMessage());
+        }
+
+        return retVal;
+    }
+
 
     // TODO: Parsers
     private UserUIModel ParseUserInfoResponseJSON(String complexDataInfo) throws JSONException {

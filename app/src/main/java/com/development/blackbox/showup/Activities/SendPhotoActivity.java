@@ -231,6 +231,9 @@ public class SendPhotoActivity extends PresentationLayerBase implements ICallbac
                 //Android/data/com.development.blackbox.showup/files/Pictures
 
                 Uri photoURI;
+                int u = 10;
+                int y = 0;
+                int oo = u / y;
 
                 if(Build.VERSION.SDK_INT >= 24) {
 
@@ -259,6 +262,8 @@ public class SendPhotoActivity extends PresentationLayerBase implements ICallbac
             } catch (Exception ex) {
 
                 String ss = ex.getMessage();
+                //ex.setStackTrace();
+                _LogHelper.logError(ex);
             }
 
 

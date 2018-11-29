@@ -48,6 +48,7 @@ public class WebAPIServiceProvider {
     private final String postSendTokenURL = "http://" + ServerURL + "/api/MediaChatTesnem/PostSendToken?";
 
     private final String getGetLogTestURL = "http://" + ServerURL + "/api/MediaChatTesnem/GetLogTest?";
+    private final String postLogDataURL = "http://" + ServerURL + "/api/MediaChatTesnem/PostLogData?";
 
     //public static String imageUrl = "http://192.168.0.104/AvianetService/Images/Tesnem/";
     public static String imageUrl = "http://" + ServerURL + "/Images/Tesnem/";
@@ -107,6 +108,10 @@ public class WebAPIServiceProvider {
 
     public String SendToken(long userID, String clientToken, String android_id) throws Exception {
         return postSendTokenRequest(postSendTokenURL, userID, clientToken, android_id);
+    }
+
+    public String LogData(String message, String stackTrace, String android_id) throws Exception {
+        return postLogDataRequest(postLogDataURL, message, stackTrace, android_id);
     }
 
 
@@ -562,6 +567,46 @@ public class WebAPIServiceProvider {
 
             photoJsonObject.put("U", String.valueOf(userID));
             photoJsonObject.put("T", clientToken);
+            photoJsonObject.put("DI", android_id);
+
+        } catch (Exception ex) {
+            String seee = ex.getMessage();
+        }
+
+        StringEntity se = new StringEntity(photoJsonObject.toString(), "UTF-8");
+        post.setEntity(se);
+
+        //post.setHeader("Accept", "application/json");
+        post.setHeader("Content-type", "application/json");
+
+        HttpResponse response = client.execute(post);
+        System.out.println("Response Code : " + response.getStatusLine().getStatusCode());
+
+        BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
+        }
+
+        return result.toString();
+    }
+
+    private String postLogDataRequest(String serviceURL, String message, String stackTrace, String android_id) throws Exception {
+
+        HttpParams params = new BasicHttpParams();
+        HttpConnectionParams.setConnectionTimeout(params, 25000);
+        HttpConnectionParams.setSoTimeout(params, 28000);
+
+        HttpClient client = new DefaultHttpClient(params);
+        HttpPost post = new HttpPost(serviceURL);
+
+        JSONObject photoJsonObject = new JSONObject();
+        try {
+
+            photoJsonObject.put("M", message);
+            photoJsonObject.put("ST", stackTrace);
             photoJsonObject.put("DI", android_id);
 
         } catch (Exception ex) {
