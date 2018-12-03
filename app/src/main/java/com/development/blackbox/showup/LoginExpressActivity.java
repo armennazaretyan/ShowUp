@@ -50,7 +50,6 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
 
     UserUIModel _UserModel = null;
     private ActiveUsersResponse _ActiveUsersResponse = null;
-    //String _NickName = "";
 
     protected Fragment activeFragment;
 
