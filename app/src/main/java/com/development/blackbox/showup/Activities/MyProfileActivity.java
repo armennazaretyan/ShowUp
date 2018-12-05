@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -36,6 +35,9 @@ public class MyProfileActivity extends PresentationLayerBase implements ICallbac
         EditText etName = (EditText) findViewById(R.id.etEditMyName);
         etName.setText(_UserUIModel.UserName);
         etName.requestFocus();
+
+        EditText etEditMyAge = (EditText) findViewById(R.id.etEditMyAge);
+        etEditMyAge.setText(String.valueOf(_UserUIModel.Age));
     }
 
     public void onSaveMyName(View view) {
@@ -50,6 +52,9 @@ public class MyProfileActivity extends PresentationLayerBase implements ICallbac
 
             EditText etName = (EditText) findViewById(R.id.etEditMyName);
             String name = etName.getText().toString();
+
+            EditText etEditMyAge = (EditText) findViewById(R.id.etEditMyAge);
+            String age = etEditMyAge.getText().toString();
 
             if (!name.trim().isEmpty()) {
 
@@ -86,6 +91,13 @@ public class MyProfileActivity extends PresentationLayerBase implements ICallbac
 
             return;
         }
+    }
+
+    public void onCancel(View view) {
+
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
+        finish();
     }
 
     @Override

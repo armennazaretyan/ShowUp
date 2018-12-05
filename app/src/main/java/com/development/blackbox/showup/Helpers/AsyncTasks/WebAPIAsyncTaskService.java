@@ -65,7 +65,7 @@ public class WebAPIAsyncTaskService extends AsyncTask<Object, Void, Object> {
                 WebAPIService service = new WebAPIService();
 
                 UserUIModel userUIModel = (UserUIModel) objects[1];
-                retVal = service.ChangeProfile(userUIModel.ID, userUIModel.UserName);
+                retVal = service.ChangeProfile(userUIModel);
 
             } else if (asyncCallTypeValue == AsyncCallType.TRY_REQUEST.getCode()) {
 
