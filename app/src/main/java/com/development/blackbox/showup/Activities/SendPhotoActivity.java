@@ -213,7 +213,6 @@ public class SendPhotoActivity extends PresentationLayerBase implements ICallbac
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         //takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-
         // Create the File where the photo should go
         File photoFile = null;
         try {
