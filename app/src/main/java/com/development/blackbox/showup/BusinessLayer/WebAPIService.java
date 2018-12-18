@@ -47,14 +47,14 @@ public class WebAPIService {
         return retVal;
     }
 
-    public boolean ChangeProfile(long userID, String userName) throws Exception {
+    public boolean ChangeProfile(UserUIModel userUIModel) throws Exception {
 
         boolean retVal = true;
 
         try {
 
             WebAPIServiceProvider dbService = new WebAPIServiceProvider();
-            String stringRetValObject = dbService.ChangeProfile(userID, userName);
+            String stringRetValObject = dbService.ChangeProfile(userUIModel.ID, userUIModel.UserName, userUIModel.Age);
 
             if (Integer.parseInt(stringRetValObject.toString()) == 1) {
                 retVal = true;

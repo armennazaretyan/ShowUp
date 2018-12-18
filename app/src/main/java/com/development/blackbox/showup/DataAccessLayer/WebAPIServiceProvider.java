@@ -58,8 +58,8 @@ public class WebAPIServiceProvider {
         return postRegisterRequest(postRegisterURL, userName, loginName, pwd, age, gender, imgPath, android_id);
     }
 
-    public String ChangeProfile(long userID, String userName) throws Exception {
-        return getChangeProfileRequest(getChangeProfileURL, userID, userName);
+    public String ChangeProfile(long userID, String userName, int age) throws Exception {
+        return getChangeProfileRequest(getChangeProfileURL, userID, userName, age);
     }
 
     public String Login(String loginName, String pwd) throws Exception {
@@ -161,11 +161,12 @@ public class WebAPIServiceProvider {
         return result.toString();
     }
 
-    private String getChangeProfileRequest(String serviceURL, long userID, String userName) throws Exception {
+    private String getChangeProfileRequest(String serviceURL, long userID, String userName, int age) throws Exception {
 
         List<NameValuePair> urlParameters = new ArrayList<NameValuePair>();
         urlParameters.add(new BasicNameValuePair("userID", String.valueOf(userID)));
         urlParameters.add(new BasicNameValuePair("userName", userName));
+        urlParameters.add(new BasicNameValuePair("userAge", String.valueOf(age)));
         String paramString = URLEncodedUtils.format(urlParameters, "utf-8");
         serviceURL += paramString;
 
