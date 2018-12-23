@@ -223,7 +223,7 @@ public class SendPhotoActivity extends PresentationLayerBase implements ICallbac
             String dd = "";
         }
 
-        // TODO: Commit
+        // TODO: Commit .
         // Continue only if the File was successfully created
         if (photoFile != null) {
 
