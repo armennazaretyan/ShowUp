@@ -407,10 +407,13 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
 
             _ProgressDialog = ProgressDialog.show(this, "Request", "Please wait.");
 
+            SharedPreferences userInfoShPref = getSharedPreferences(Config.LOGIN_SETTINGS, MODE_PRIVATE);
+            int age = userInfoShPref.getInt(Config.USER_AGE_KEY, 25);
+
             _UserModel.UserName = userName;
             _UserModel.LoginName = userName;
             _UserModel.Password = userName;
-            _UserModel.Age = Integer.parseInt("25");
+            _UserModel.Age = age;
             _UserModel.GenderType = (_MaleChecked) ? GenderEnumType.MALE : GenderEnumType.FEMALE;
             _UserModel.ImageURL = "";
 

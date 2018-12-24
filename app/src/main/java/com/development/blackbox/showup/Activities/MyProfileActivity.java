@@ -134,6 +134,7 @@ public class MyProfileActivity extends PresentationLayerBase implements ICallbac
             SharedPreferences languageprefT = getSharedPreferences(Config.LOGIN_SETTINGS, MODE_PRIVATE);
             SharedPreferences.Editor editorT = languageprefT.edit();
             editorT.putString(Config.USER_NAME_KEY, _UserUIModel.UserName);
+            editorT.putInt(Config.USER_AGE_KEY, _UserUIModel.Age);
             editorT.commit();
 
             Intent intent = new Intent();
