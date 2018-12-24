@@ -54,11 +54,17 @@ public class MyProfileActivity extends PresentationLayerBase implements ICallbac
             String name = etName.getText().toString();
 
             EditText etEditMyAge = (EditText) findViewById(R.id.etEditMyAge);
-            String age = etEditMyAge.getText().toString();
+            //int age = Integer.parseInt(etEditMyAge.getText().toString());
+            int age = _UserUIModel.Age;
+            String sage = etEditMyAge.getText().toString();
+            if(sage != "") {
+                age = Integer.parseInt(etEditMyAge.getText().toString());
+            }
 
             if (!name.trim().isEmpty()) {
 
                 _UserUIModel.UserName = name;
+                _UserUIModel.Age = age;
 
                 Object objParamsTrans[] = new Object[2];
                 objParamsTrans[0] = AsyncCallType.CHANGE_PROFILE.getCode();
