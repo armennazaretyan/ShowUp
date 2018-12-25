@@ -41,7 +41,7 @@ public class LoginActivity extends PresentationLayerBase implements ICallbackabl
             ui.ID = id;
             ui.UserName = userInfoShPref.getString(Config.USER_NAME_KEY, "");
             ui.LoginName = userInfoShPref.getString(Config.USER_LOGIN_NAME_KEY, "");
-            ui.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, 0);
+            ui.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, Config.USER_AGE_DEFAULT);
             ui.GenderType = GenderEnumType.ParseInt(userInfoShPref.getInt(Config.USER_GENDER_KEY, 0));
 
             Intent intent = new Intent(this, MainActivity.class);

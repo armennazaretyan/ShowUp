@@ -72,7 +72,7 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
             ui.ID = id;
             ui.UserName = userInfoShPref.getString(Config.USER_NAME_KEY, "");
             ui.LoginName = userInfoShPref.getString(Config.USER_LOGIN_NAME_KEY, "");
-            ui.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, 0);
+            ui.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, Config.USER_AGE_DEFAULT);
             ui.GenderType = GenderEnumType.ParseInt(userInfoShPref.getInt(Config.USER_GENDER_KEY, 0));
 
             Intent intent = new Intent(this, MainActivity.class);
@@ -408,7 +408,7 @@ public class LoginExpressActivity extends PresentationLayerBase implements ICall
             _ProgressDialog = ProgressDialog.show(this, "Request", "Please wait.");
 
             SharedPreferences userInfoShPref = getSharedPreferences(Config.LOGIN_SETTINGS, MODE_PRIVATE);
-            int age = userInfoShPref.getInt(Config.USER_AGE_KEY, 25);
+            int age = userInfoShPref.getInt(Config.USER_AGE_KEY, Config.USER_AGE_DEFAULT);
 
             _UserModel.UserName = userName;
             _UserModel.LoginName = userName;

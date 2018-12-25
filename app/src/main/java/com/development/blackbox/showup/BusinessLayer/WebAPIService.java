@@ -161,13 +161,15 @@ public class WebAPIService {
             WebAPIServiceProvider dbService = new WebAPIServiceProvider();
             String stringRetValObject = dbService.LoginExpress(userName, loginName, pwd, age, gender, imgPath, android_id);
 
-            retVal.ID = Integer.parseInt(stringRetValObject);
+            /*retVal.ID = Integer.parseInt(stringRetValObject);
             retVal.UserName = userName;
             retVal.LoginName = loginName;
             retVal.Password = pwd;
             retVal.Age = age;
             retVal.GenderType = GenderEnumType.ParseInt(gender);
-            retVal.ImageURL = imgPath;
+            retVal.ImageURL = imgPath;*/
+
+            retVal = ParseUserInfoResponseJSON(stringRetValObject);
 
         } catch (Exception ex) {
 

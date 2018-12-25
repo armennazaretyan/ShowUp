@@ -20,4 +20,5 @@ public class Config {
 
     public static int NetworkChangePeriod = 45000;
 
+    public static int USER_AGE_DEFAULT = 25;
 }

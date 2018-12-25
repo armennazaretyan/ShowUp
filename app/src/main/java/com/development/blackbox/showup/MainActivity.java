@@ -136,7 +136,7 @@ public class MainActivity extends PresentationLayerBase
                 _Me.ID = id;
                 _Me.UserName = userInfoShPref.getString(Config.USER_NAME_KEY, "");
                 _Me.LoginName = userInfoShPref.getString(Config.USER_LOGIN_NAME_KEY, "");
-                _Me.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, 0);
+                _Me.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, Config.USER_AGE_DEFAULT);
                 _Me.GenderType = GenderEnumType.ParseInt(userInfoShPref.getInt(Config.USER_GENDER_KEY, 0));
 
             }
@@ -404,6 +404,7 @@ public class MainActivity extends PresentationLayerBase
 
                     SharedPreferences userInfoShPref = getSharedPreferences(Config.LOGIN_SETTINGS, MODE_PRIVATE);
                     _Me.UserName = userInfoShPref.getString(Config.USER_NAME_KEY, "");
+                    _Me.Age = userInfoShPref.getInt(Config.USER_AGE_KEY, Config.USER_AGE_DEFAULT);
                     _txtProfileName.setText(_Me.UserName);
 
                     break;
