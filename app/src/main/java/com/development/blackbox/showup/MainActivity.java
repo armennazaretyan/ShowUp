@@ -76,8 +76,6 @@ public class MainActivity extends PresentationLayerBase
 //        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
-        setTitle("Home");
-
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
         MyFirebaseInstanceIDService.storeRegIdInPref(this, refreshedToken);
         MyFirebaseInstanceIDService.sendRegistrationToServer(this, refreshedToken);
@@ -143,6 +141,7 @@ public class MainActivity extends PresentationLayerBase
 
         }
 
+        setTitle("Hi, " + _Me.UserName + "!");
 
 
         navigationView.getMenu().getItem(0).setChecked(true);
