@@ -18,8 +18,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,7 +29,6 @@ import com.development.blackbox.showup.Fragments.ActiveUsersFragment;
 import com.development.blackbox.showup.Fragments.CategoriesFragment;
 import com.development.blackbox.showup.Helpers.Config;
 import com.development.blackbox.showup.Helpers.Enums.GenderEnumType;
-import com.development.blackbox.showup.Helpers.Enums.OrderEnumType;
 import com.development.blackbox.showup.Helpers.Interfaces.ICallbackable;
 import com.development.blackbox.showup.Helpers.MyFirebaseInstanceIDService;
 import com.development.blackbox.showup.Helpers.Network.GcmKeepAlive;
@@ -141,7 +138,8 @@ public class MainActivity extends PresentationLayerBase
 
         }
 
-        setTitle("Hi, " + _Me.UserName + "!");
+        //setTitle("Hi, " + _Me.UserName + "!");
+        setTitle("");
 
 
         navigationView.getMenu().getItem(0).setChecked(true);
@@ -187,6 +185,10 @@ public class MainActivity extends PresentationLayerBase
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem bedMenuItem = menu.findItem(R.id.action_user_name);
+        bedMenuItem.setTitle("Hi, " + _Me.UserName + "!");
+
         return true;
     }
 
@@ -200,6 +202,13 @@ public class MainActivity extends PresentationLayerBase
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == R.id.action_user_name) {
+
+            Intent intent = new Intent(this, MyProfileActivity.class);
+            intent.putExtra("1", (Serializable) _Me);
+            startActivityForResult(intent, CHANGE_PROFILE_REQUEST_CODE);
         }
 
         if (id == R.id.action_log_out) {
